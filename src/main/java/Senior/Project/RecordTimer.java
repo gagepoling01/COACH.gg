@@ -15,6 +15,10 @@ public class RecordTimer {
 		startTime = System.currentTimeMillis();
 	}
 	
+	public static void stop() {
+		stopTime = System.currentTimeMillis();
+	}
+	
 	public static long getTimeInMillisec() {
 		return stopTime - startTime;
 	}
