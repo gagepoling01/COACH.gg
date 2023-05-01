@@ -25,5 +25,3 @@ public class APIService {
 		return timeline;
 	}
 }
-
-
