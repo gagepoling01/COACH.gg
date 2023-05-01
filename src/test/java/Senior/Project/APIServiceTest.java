@@ -12,7 +12,7 @@ public class APIServiceTest {
 	@Test
 	public void testGetCurrentMatch() { // need to refresh API key and enter name when you wish to test
 		
-		assertNotNull(api.getCurrentMatchID("fakeUser"));
+		assertNotNull(api.getCurrentMatchID("fakeUser")); // swap fakeUser with a player in a live game
 	}
 	
 	@Test
