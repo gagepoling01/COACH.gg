@@ -59,7 +59,7 @@ public class MainScreenRecorderFrame extends JFrame {
 		timer = new JLabel("Timer: ");
 	}
 	
-	public void prepareGUI() {
+	public void prepareGUI() {						// method to prepare the recording GUI
 		setSize(width, height);
 		setLayout(null);
 		setTitle("Recording Controls");
@@ -81,14 +81,14 @@ public class MainScreenRecorderFrame extends JFrame {
 		add(recordTime);
 		add(timer);
 
-		startButton.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
+		startButton.addActionListener(new java.awt.event.ActionListener() {		// makes StartButton listen for
+			public void actionPerformed(java.awt.event.ActionEvent evt) {		// button press
 				buttonStartRecordingActionPerformed(evt);
 			}
 		});
 		
-		stopButton.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
+		stopButton.addActionListener(new java.awt.event.ActionListener() {		// makes StopButton listen for
+			public void actionPerformed(java.awt.event.ActionEvent evt) {		// button press
 				buttonStopRecordingActionPerformed(evt);
 			}
 		});
@@ -97,10 +97,10 @@ public class MainScreenRecorderFrame extends JFrame {
 		setVisible(true);
 	}
 	
-	private void buttonStartRecordingActionPerformed(java.awt.event.ActionEvent evt) {
+	private void buttonStartRecordingActionPerformed(java.awt.event.ActionEvent evt) {	// starts recording
 		if (!isRecording) {
 			
-			initEncoder("record3");
+			initEncoder("vod_recording_test");
 		
 			int delay = 1000 / 24;
 		
@@ -123,7 +123,7 @@ public class MainScreenRecorderFrame extends JFrame {
 		isRecording = true;
 	}
 	
-	private void buttonStopRecordingActionPerformed(java.awt.event.ActionEvent evt) {
+	private void buttonStopRecordingActionPerformed(java.awt.event.ActionEvent evt) {		// stops recording
 		if (isRecording) {
 			RecordTimer.stop();
 			
@@ -152,13 +152,13 @@ public class MainScreenRecorderFrame extends JFrame {
 		isRecording = false;
 	}
 	
-	public void initEncoder(String filename) {
-		rectangle = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
+	public void initEncoder(String filename) {										// initializes the encoder
+		rectangle = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());		// gets size of screen
 		
-		file = new File(filename + ".mp4");
+		file = new File(filename + ".mp4");											// creates a File object to store
 		
 		try {
-			encoder = AWTSequenceEncoder.createSequenceEncoder(file, 60);
+			encoder = AWTSequenceEncoder.createSequenceEncoder(file, 24/4);			// creates the encoder
 		} catch (IOException ex) {
 			Logger.getLogger(MainScreenRecorderFrame.class.getName()).log(Level.SEVERE, null, ex);
 		}
